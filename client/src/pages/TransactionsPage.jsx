@@ -138,7 +138,7 @@ const TransactionsPage = () => {
             <div className="space-y-4">
                 {loading ? (
                     Array(5).fill(0).map((_, i) => <Skeleton key={i} className="h-16 w-full" />)
-                ) : transactions.length > 0 ? (
+                ) : transactions && transactions.length > 0 ? (
                     transactions.map((t) => (
                         <div key={t._id} className="bg-card p-4 rounded-lg shadow-sm border border-border flex justify-between items-center group">
                             <div className="flex items-center gap-4">

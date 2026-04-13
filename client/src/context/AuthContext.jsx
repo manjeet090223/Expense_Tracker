@@ -121,7 +121,7 @@ export const AuthProvider = ({ children }) => {
             
             let errorMsg = 'Login failed';
             
-            // Handle specific error cases
+
             if (err.response?.status === 400) {
                 errorMsg = err.response?.data?.message || 'Invalid email or password';
             } else if (err.response?.status === 401) {

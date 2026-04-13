@@ -10,7 +10,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
-    // Local state for form
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,14 +21,14 @@ const Profile = () => {
         useLetterAvatar: false
     });
 
-    // Initialize form from user data
+
     useEffect(() => {
         if (user) {
             const useLetterAvatar = user.avatar === 'letter' || !user.avatar || user.avatar === '';
             setFormData({
                 name: user.name || '',
                 email: user.email || '',
-                password: '', // Don't prefill password
+                password: '', 
                 avatar: useLetterAvatar ? 'letter' : user.avatar,
                 currency: user.currency || 'USD',
                 theme: user.theme || 'light',
@@ -37,7 +37,7 @@ const Profile = () => {
         }
     }, [user]);
 
-    // Handle redirect after profile update
+
     useEffect(() => {
         if (shouldRedirect) {
             navigate('/', { replace: true });
@@ -49,12 +49,12 @@ const Profile = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Apply theme immediately when changed
+
     const handleThemeChange = (e) => {
         const newTheme = e.target.value;
         setFormData({ ...formData, theme: newTheme });
 
-        // Apply theme immediately to DOM
+
         if (newTheme === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
@@ -70,7 +70,7 @@ const Profile = () => {
             return;
         }
 
-        // Prepare data to send
+
         const dataToSend = { ...formData };
         if (!dataToSend.password) delete dataToSend.password;
         if (dataToSend.avatar === 'letter') dataToSend.avatar = '';
@@ -86,12 +86,12 @@ const Profile = () => {
 
             const res = await axios.put('https://expense-tracker-1-y2e5.onrender.com/api/users/profile', dataToSend, config);
 
-            // Update context with new user data (includes new token)
+
             updateUser(res.data);
 
             toast.success("Settings saved successfully!");
             
-            // Trigger redirect after state update
+
             setShouldRedirect(true);
         } catch (error) {
             console.error('Profile update error:', error);
@@ -108,12 +108,12 @@ const Profile = () => {
         "https://api.dicebear.com/7.x/avataaars/svg?seed=Max"
     ];
 
-    // Get the letter avatar display
+
     const getLetterAvatar = () => {
         return (formData.name || 'U').charAt(0).toUpperCase();
     };
 
-    // Determine what to show in the main avatar display
+
     const renderMainAvatar = () => {
         if (formData.avatar === 'letter' || formData.useLetterAvatar) {
             return (
@@ -131,14 +131,14 @@ const Profile = () => {
             <h1 className="text-3xl font-bold mb-8 text-foreground">User Profile</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Avatar Section */}
+
                 <div className="md:col-span-1 flex flex-col items-center space-y-4">
                     <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary shadow-lg bg-muted">
                         {renderMainAvatar()}
                     </div>
                     <p className="text-sm text-muted-foreground">Select an avatar</p>
 
-                    {/* Letter Avatar Option */}
+
                     <button
                         type="button"
                         onClick={() => setFormData({ ...formData, avatar: 'letter', useLetterAvatar: true })}
@@ -151,7 +151,7 @@ const Profile = () => {
                         Use First Letter ({getLetterAvatar()})
                     </button>
 
-                    {/* Avatar Options */}
+
                     <div className="grid grid-cols-3 gap-2 w-full">
                         {avatars.map((av, i) => (
                             <button
@@ -169,7 +169,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* Form Section */}
+
                 <div className="md:col-span-2 bg-card p-6 rounded-lg shadow-sm border border-border">
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>

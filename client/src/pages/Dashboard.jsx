@@ -77,7 +77,7 @@ const Dashboard = () => {
                     </button>
                 </div>
                 <div className="p-6">
-                    {transactions.length > 0 ? (
+                    {transactions && transactions.length > 0 ? (
                         <div className="space-y-4">
                             {transactions.map(t => (
                                 <div key={t._id} className="flex justify-between items-center py-2 border-b border-border last:border-0 hover:bg-muted/50 p-2 rounded-md transition-colors">

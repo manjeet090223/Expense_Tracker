@@ -7,10 +7,10 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'
 const ExpenseChart = () => {
     const { transactions } = useContext(GlobalContext);
 
-    // Filter only expenses
+
     const expenses = transactions.filter(t => t.type === 'expense');
 
-    // Aggregate by category
+
     const dataObj = expenses.reduce((acc, current) => {
         if (acc[current.category]) {
             acc[current.category] += Math.abs(current.amount);

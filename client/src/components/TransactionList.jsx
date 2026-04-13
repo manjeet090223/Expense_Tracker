@@ -17,7 +17,7 @@ export const TransactionList = () => {
         <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-lg font-bold mb-4 border-b border-border pb-2">History</h3>
             <ul className="space-y-3">
-                {transactions.map((transaction) => (
+                {transactions && transactions.map((transaction) => (
                     <li
                         key={transaction._id}
                         className={cn(
@@ -43,7 +43,7 @@ export const TransactionList = () => {
                         </div>
                     </li>
                 ))}
-                {transactions.length === 0 && (
+                {!transactions || transactions.length === 0 && (
                     <p className="text-muted-foreground text-center py-4">No transactions found.</p>
                 )}
             </ul>

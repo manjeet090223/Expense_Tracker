@@ -75,7 +75,7 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
     const { user, logout } = useContext(AuthContext);
 
-    // Helper to get token
+
     const config = () => {
         return {
             headers: {
@@ -86,7 +86,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function getTransactions(params = {}) {
         try {
-            // dispatch({ type: 'SET_LOADING' }); // Optional: loading state for refetch
+
             const query = new URLSearchParams(params).toString();
             const res = await axios.get(`https://expense-tracker-1-y2e5.onrender.com/api/transactions?${query}`, config());
 
@@ -148,7 +148,7 @@ export const GlobalProvider = ({ children }) => {
                 type: 'ADD_TRANSACTION',
                 payload: res.data,
             });
-            // Refresh analytics
+
             getAnalytics();
         } catch (err) {
             if (err.response?.status === 401) {
