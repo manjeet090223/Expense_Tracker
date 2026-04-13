@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
                 const user = JSON.parse(storedUser);
                 setUser(user);
                 
-                // Apply saved theme immediately
+
                 if (user.theme === 'dark') {
                     document.documentElement.classList.add('dark');
                 } else {
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem('user', JSON.stringify(completeUserData));
                 setUser(completeUserData);
                 
-                // Apply theme
+
                 if (completeUserData.theme === 'dark') {
                     document.documentElement.classList.add('dark');
                 } else {
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
             
             let errorMsg = 'Registration failed';
             
-            // Handle specific error cases
+
             if (err.response?.status === 400) {
                 if (err.response?.data?.message?.includes('already exists')) {
                     errorMsg = 'This email is already registered. Please login instead.';
@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem('user', JSON.stringify(completeUserData));
                 setUser(completeUserData);
                 
-                // Apply theme
+
                 if (completeUserData.theme === 'dark') {
                     document.documentElement.classList.add('dark');
                 } else {
@@ -150,7 +150,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateUser = (updatedUserData) => {
-        // Ensure we have all required fields including token
+
         const completeUserData = {
             _id: updatedUserData._id,
             name: updatedUserData.name,
@@ -158,7 +158,7 @@ export const AuthProvider = ({ children }) => {
             avatar: updatedUserData.avatar || '',
             currency: updatedUserData.currency || 'USD',
             theme: updatedUserData.theme || 'light',
-            token: updatedUserData.token // New token from server
+            token: updatedUserData.token 
         };
         localStorage.setItem('user', JSON.stringify(completeUserData));
         setUser(completeUserData);

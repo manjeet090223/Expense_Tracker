@@ -84,7 +84,7 @@ const Profile = () => {
                 }
             };
 
-            const res = await axios.put(API_ENDPOINTS.AUTH.UPDATE_PROFILE, dataToSend, config);
+            const res = await axios.put('https://expense-tracker-1-y2e5.onrender.com/api/users/profile', dataToSend, config);
 
             // Update context with new user data (includes new token)
             updateUser(res.data);
