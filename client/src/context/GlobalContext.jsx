@@ -148,7 +148,7 @@ export const GlobalProvider = ({ children }) => {
                 type: 'ADD_TRANSACTION',
                 payload: res.data,
             });
-
+            // Refresh analytics
             getAnalytics();
         } catch (err) {
             if (err.response?.status === 401) {
