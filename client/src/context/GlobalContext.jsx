@@ -88,7 +88,7 @@ export const GlobalProvider = ({ children }) => {
         try {
             // dispatch({ type: 'SET_LOADING' }); // Optional: loading state for refetch
             const query = new URLSearchParams(params).toString();
-            const res = await axios.get(`http://localhost:3001/api/transactions?${query}`, config());
+            const res = await axios.get(`https://expense-tracker-1-y2e5.onrender.com/api/transactions?${query}`, config());
 
             dispatch({
                 type: 'GET_TRANSACTIONS',
@@ -107,7 +107,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function getAnalytics() {
         try {
-            const res = await axios.get('http://localhost:3001/api/transactions/analytics', config());
+            const res = await axios.get('https://expense-tracker-1-y2e5.onrender.com/api/transactions/analytics', config());
             dispatch({
                 type: 'GET_ANALYTICS',
                 payload: res.data,
@@ -122,7 +122,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function deleteTransaction(id) {
         try {
-            await axios.delete(`http://localhost:3001/api/transactions/${id}`, config());
+            await axios.delete(`https://expense-tracker-1-y2e5.onrender.com/api/transactions/${id}`, config());
 
             dispatch({
                 type: 'DELETE_TRANSACTION',
@@ -142,7 +142,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function addTransaction(transaction) {
         try {
-            const res = await axios.post('http://localhost:3001/api/transactions', transaction, config());
+            const res = await axios.post('https://expense-tracker-1-y2e5.onrender.com/api/transactions', transaction, config());
 
             dispatch({
                 type: 'ADD_TRANSACTION',
@@ -163,7 +163,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function updateTransaction(id, updatedData) {
         try {
-            const res = await axios.put(`http://localhost:3001/api/transactions/${id}`, updatedData, config());
+            const res = await axios.put(`https://expense-tracker-1-y2e5.onrender.com/api/transactions/${id}`, updatedData, config());
             dispatch({
                 type: 'UPDATE_TRANSACTION',
                 payload: res.data,

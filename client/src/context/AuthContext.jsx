@@ -31,8 +31,8 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true);
         setError(null);
         try {
-            console.log('Sending registration request to:', 'http://localhost:3001/api/users');
-            const response = await axios.post('http://localhost:3001/api/users', userData);
+            console.log('Sending registration request to:', 'https://expense-tracker-1-y2e5.onrender.com/api/users');
+            const response = await axios.post('https://expense-tracker-1-y2e5.onrender.com/api/users', userData);
             console.log('Registration response:', response.data);
             if (response.data) {
                 const completeUserData = {
@@ -88,8 +88,8 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true);
         setError(null);
         try {
-            console.log('Sending login request to:', 'http://localhost:3001/api/users/login');
-            const response = await axios.post('http://localhost:3001/api/users/login', userData);
+            console.log('Sending login request to:', 'https://expense-tracker-1-y2e5.onrender.com/api/users/login');
+            const response = await axios.post('https://expense-tracker-1-y2e5.onrender.com/api/users/login', userData);
             console.log('Login response:', response.data);
             if (response.data) {
                 const completeUserData = {
